@@ -28,7 +28,7 @@ export async function getPost(postId: number) {
         throw new ApiError(res.status, body);
     }
 
-    return await res.json() as GetPostResponse;
+    return body as GetPostResponse;
 }
 
 export interface CreatePostRequest {

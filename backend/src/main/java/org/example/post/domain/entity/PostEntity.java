@@ -6,8 +6,9 @@ import org.example.common.TimeTrackableEntity;
 import org.example.post.domain.enums.PostStatus;
 import org.example.user.domain.entity.member.UserEntity;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -53,7 +54,8 @@ public class PostEntity extends TimeTrackableEntity {
 	@ColumnDefault("0")
 	private Integer likeCount = 0;
 
-	@OneToMany(mappedBy = "postEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "postEntity", fetch = FetchType.LAZY)
+	@Fetch(FetchMode.SUBSELECT)
 	private List<HashtagEntity> hashtags;
 
 /*	@OneToMany(mappedBy = "postEntity", fetch = FetchType.LAZY)
@@ -67,7 +69,6 @@ public class PostEntity extends TimeTrackableEntity {
 		this.likeCount = 0;
 		this.postStatus = PostStatus.PUBLISHED;
 	}
-
 
 	// convert List<HashtagEntity> to List<String>
 	public List<String> getHashtagContents() {
