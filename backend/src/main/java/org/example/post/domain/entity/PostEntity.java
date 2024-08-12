@@ -70,6 +70,7 @@ public class PostEntity extends TimeTrackableEntity {
 		this.postStatus = PostStatus.PUBLISHED;
 	}
 
+
 	// convert List<HashtagEntity> to List<String>
 	public List<String> getHashtagContents() {
 		return hashtags.stream()
