@@ -7,7 +7,6 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const __filename = fileURLToPath(import.meta.url); 
 
 const nextConfig = {
-    reactStrictMode: false,
     async redirects() {
         return [
             {
